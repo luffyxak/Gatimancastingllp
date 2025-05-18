@@ -2,9 +2,9 @@
 
 // Wait for DOM content to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize EmailJS
+    // Initialize EmailJS with the correct public key
     (function() {
-        emailjs.init("user_yourPublicKey"); // User will need to replace with their actual EmailJS public key
+        emailjs.init("F7xVwOJdfw0MX9NXJ");
     })();
 
     // DOM Elements
@@ -133,15 +133,19 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Prepare form data for EmailJS
             const templateParams = {
-                name: document.getElementById('name').value,
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
+                company_name: document.getElementById('company').value,
+                country: document.getElementById('country').value,
+                state: document.getElementById('state').value,
+                city: document.getElementById('city').value,
                 subject: document.getElementById('subject').value,
                 message: document.getElementById('message').value
             };
             
-            // Send email using EmailJS
-            emailjs.send('service_id', 'template_id', templateParams, 'user_yourPublicKey') // Replace with your actual service and template IDs
+            // Send email using EmailJS with hardcoded values for now
+            emailjs.send('service_23btjwg', 'template_knounkt', templateParams, 'F7xVwOJdfw0MX9NXJ')
                 .then(function(response) {
                     console.log('Email sent successfully!', response);
                     // Show success message
